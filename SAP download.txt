@@ -1,0 +1,165 @@
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+
+This is a temporary script file.
+"""
+
+import win32com.client
+import os
+import subprocess
+import datetime
+import time
+import pandas as pd
+
+def sapscript() :
+    path = r"C:\Program Files (x86)\SAP\FrontEnd\SAPgui\saplogon.exe"
+    subprocess.Popen(path)
+    time.sleep(10)  
+    SapGuiAuto = win32com.client.GetObject('SAPGUI')
+
+    if not type(SapGuiAuto) == win32com.client.CDispatch:
+        return
+    application = SapGuiAuto.GetScriptingEngine
+    if not type(application) == win32com.client.CDispatch:
+            SapGuiAuto = None
+            return
+    connection = application.OpenConnection("111. PR1    [ECC Production]", True)
+    if not type(connection) == win32com.client.CDispatch:
+        application = None
+        SapGuiAuto = None
+        return
+    session = connection.Children(0)
+    if not type(session) == win32com.client.CDispatch:
+        connection = None
+        application = None
+        SapGuiAuto = None
+        return
+    
+    from datetime import date, timedelta
+
+    last_day_of_prev_month = date.today().replace(day=1) - timedelta(days=1)
+    start_day_of_prev_month = date.today().replace(day=1) - timedelta(days=last_day_of_prev_month.day)
+
+    last_date = last_day_of_prev_month.strftime ('%m/%d/%Y')
+    start_date = start_day_of_prev_month.strftime ('%m/%d/%Y')
+
+Script'
+
+    session.findById("wnd[0]").maximize
+    session.findById("wnd[0]/usr/txtRSYST-BNAME").text = "Maghama"
+    session.findById("wnd[0]/usr/pwdRSYST-BCODE").text = "Pune2021"
+    session.findById("wnd[0]/usr/pwdRSYST-BCODE").setFocus
+    session.findById("wnd[0]/usr/pwdRSYST-BCODE").caretPosition = 7
+    session.findById("wnd[0]").sendVKey (0)
+    session.findById("wnd[0]/tbar[0]/okcd").text = "mb51"
+    session.findById("wnd[0]").sendVKey (0)
+    session.findById("wnd[0]/usr/btn%_WERKS_%_APP_%-VALU_PUSH").press()
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpSIVA/ssubSCREEN_HEADER:SAPLALDB:3010/tblSAPLALDBSINGLE/ctxtRSCSEL-SLOW_I[1,0]").text = "4213"
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpSIVA/ssubSCREEN_HEADER:SAPLALDB:3010/tblSAPLALDBSINGLE/ctxtRSCSEL-SLOW_I[1,1]").text = "4207"
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpSIVA/ssubSCREEN_HEADER:SAPLALDB:3010/tblSAPLALDBSINGLE/ctxtRSCSEL-SLOW_I[1,2]").text = "4208"
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpSIVA/ssubSCREEN_HEADER:SAPLALDB:3010/tblSAPLALDBSINGLE/ctxtRSCSEL-SLOW_I[1,3]").text = "4015"
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpSIVA/ssubSCREEN_HEADER:SAPLALDB:3010/tblSAPLALDBSINGLE/ctxtRSCSEL-SLOW_I[1,4]").text = "4116"
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpSIVA/ssubSCREEN_HEADER:SAPLALDB:3010/tblSAPLALDBSINGLE/ctxtRSCSEL-SLOW_I[1,5]").text = "4117"
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpSIVA/ssubSCREEN_HEADER:SAPLALDB:3010/tblSAPLALDBSINGLE/ctxtRSCSEL-SLOW_I[1,6]").text = "4118"
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpSIVA/ssubSCREEN_HEADER:SAPLALDB:3010/tblSAPLALDBSINGLE/ctxtRSCSEL-SLOW_I[1,7]").text = "4902"
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpSIVA/ssubSCREEN_HEADER:SAPLALDB:3010/tblSAPLALDBSINGLE/ctxtRSCSEL-SLOW_I[1,7]").setFocus
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpSIVA/ssubSCREEN_HEADER:SAPLALDB:3010/tblSAPLALDBSINGLE/ctxtRSCSEL-SLOW_I[1,7]").caretPosition = 4
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpSIVA/ssubSCREEN_HEADER:SAPLALDB:3010/tblSAPLALDBSINGLE").verticalScrollbar.position = 3
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpSIVA/ssubSCREEN_HEADER:SAPLALDB:3010/tblSAPLALDBSINGLE/ctxtRSCSEL-SLOW_I[1,5]").text = "4903"
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpSIVA/ssubSCREEN_HEADER:SAPLALDB:3010/tblSAPLALDBSINGLE/ctxtRSCSEL-SLOW_I[1,5]").setFocus
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpSIVA/ssubSCREEN_HEADER:SAPLALDB:3010/tblSAPLALDBSINGLE/ctxtRSCSEL-SLOW_I[1,5]").caretPosition = 4
+    session.findById("wnd[1]/tbar[0]/btn[8]").press()
+    session.findById("wnd[0]/usr/btn%_BWART_%_APP_%-VALU_PUSH").press()
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpSIVA/ssubSCREEN_HEADER:SAPLALDB:3010/tblSAPLALDBSINGLE/ctxtRSCSEL-SLOW_I[1,0]").text = "101"
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpSIVA/ssubSCREEN_HEADER:SAPLALDB:3010/tblSAPLALDBSINGLE/ctxtRSCSEL-SLOW_I[1,1]").text = "261"
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpSIVA/ssubSCREEN_HEADER:SAPLALDB:3010/tblSAPLALDBSINGLE/ctxtRSCSEL-SLOW_I[1,2]").text = "633"
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpSIVA/ssubSCREEN_HEADER:SAPLALDB:3010/tblSAPLALDBSINGLE/ctxtRSCSEL-SLOW_I[1,3]").text = "601"
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpSIVA/ssubSCREEN_HEADER:SAPLALDB:3010/tblSAPLALDBSINGLE/ctxtRSCSEL-SLOW_I[1,4]").text = "911"
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpSIVA/ssubSCREEN_HEADER:SAPLALDB:3010/tblSAPLALDBSINGLE/ctxtRSCSEL-SLOW_I[1,4]").setFocus
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpSIVA/ssubSCREEN_HEADER:SAPLALDB:3010/tblSAPLALDBSINGLE/ctxtRSCSEL-SLOW_I[1,4]").caretPosition = 3
+    session.findById("wnd[1]/tbar[0]/btn[8]").press()
+    session.findById("wnd[0]/usr/btn%_BUDAT_%_APP_%-VALU_PUSH").press()
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpINTL").select()
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpINTL/ssubSCREEN_HEADER:SAPLALDB:3020/tblSAPLALDBINTERVAL/ctxtRSCSEL-ILOW_I[1,0]").text = str(start_date)
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpINTL/ssubSCREEN_HEADER:SAPLALDB:3020/tblSAPLALDBINTERVAL/ctxtRSCSEL-IHIGH_I[2,0]").text = str(last_date)
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpINTL/ssubSCREEN_HEADER:SAPLALDB:3020/tblSAPLALDBINTERVAL/ctxtRSCSEL-IHIGH_I[2,0]").setFocus
+    session.findById("wnd[1]/usr/tabsTAB_STRIP/tabpINTL/ssubSCREEN_HEADER:SAPLALDB:3020/tblSAPLALDBINTERVAL/ctxtRSCSEL-IHIGH_I[2,0]").caretPosition = 10
+    session.findById("wnd[1]/tbar[0]/btn[8]").press()
+    session.findById("wnd[0]/tbar[1]/btn[8]").press()
+    session.findById("wnd[0]").sendVKey (48)
+    session.findById("wnd[0]/mbar/menu[3]/menu[2]/menu[1]").select()
+    session.findById("wnd[1]/usr/ssubD0500_SUBSCREEN:SAPLSLVC_DIALOG:0501/cmbG51_USPEC_LBOX").key = "X"
+    session.findById("wnd[1]/usr/ssubD0500_SUBSCREEN:SAPLSLVC_DIALOG:0501/cntlG51_CONTAINER/shellcont/shell").selectedRows = "0"
+    session.findById("wnd[1]/usr/ssubD0500_SUBSCREEN:SAPLSLVC_DIALOG:0501/cntlG51_CONTAINER/shellcont/shell").clickCurrentCell()
+    session.findById("wnd[0]/mbar/menu[0]/menu[1]/menu[2]").select ()
+    session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").select()
+    session.findById("wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]").setFocus
+    session.findById("wnd[1]/tbar[0]/btn[0]").press ()
+    session.findById("wnd[1]/usr/ctxtDY_PATH").setFocus
+    session.findById("wnd[1]/usr/ctxtDY_PATH").text = "C:\\Users\\kgo1\\Downloads"
+    session.findById("wnd[1]/usr/ctxtDY_FILENAME").text = "IQ09.xls"
+    session.findById("wnd[1]/usr/ctxtDY_FILENAME").caretPosition = 8
+    session.findById("wnd[1]/tbar[0]/btn[11]").press()
+    
+ SCript end
+
+      
+    o = win32com.client.Dispatch("Excel.Application")
+    o.Visible = False
+                
+    Input = 'C:/Users/kgo1/Downloads/IQ09.xls'
+    os.chdir("C:\\Users\\kgo1\\Downloads")
+    output = os.getcwd() + '/' + 'IQ09.xlsx'
+                
+    wb = o.Workbooks.Open(Input)
+    wb.ActiveSheet.SaveAs(output,51)
+    wb.Close()
+    time.sleep(5)
+    o.Quit()
+    
+    
+    from win32com.client import Dispatch
+    path1 = (r'C:\Users\kgo1\Downloads\IQ09.xlsx')
+    xl = Dispatch("Excel.Application")
+    xl.Visible = False  
+    
+    
+    wb1 = xl.Workbooks.Open(Filename=path1)
+    ws1 = wb1.Worksheets(1)
+    
+    
+    ws1.Columns("A:B").Delete(Shift=-4159)
+    ws1.Rows("1").Delete(Shift=-4162)
+    ws1.Rows("2:2").Delete(Shift=-4162)
+    xlUp = -4162
+    lastrow = ws1.Cells(ws1.Rows.Count, "A").End(xlUp).Row + 1
+    i = lastrow
+    print (i)
+    xlDown = -4121
+    ws1.Range("A"+str(i)).Select()
+    u = ws1.Cells(ws1.Rows.Count,str(i)).End(xlDown).Row
+    b = u
+    ws1.Rows(str(i)&":"&str(b)).Delete(Shift=-4162)
+        
+    
+    wb1.Save()
+    wb1.Close()
+    xl.Quit()
+    
+    Input = 'C:/Users/kgo1/Downloads/IQ09.xls'
+    os.chdir("C:\\Users\\kgo1\\Downloads")
+    output = os.getcwd() + '/' + 'IQ09.xlsx'
+
+
+sapscript()
+
+
+
+
+Batch file
+
+call "C:\Users\kgo1\Anaconda3\condabin\activate.bat"
+"C:\Users\kgo1\Documents\STO_New_script.py"
+pause
+
